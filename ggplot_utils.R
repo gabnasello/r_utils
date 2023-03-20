@@ -23,7 +23,7 @@ ggplotMinAethetics <- function(ggplt,
                                width=NULL, height=NULL,
                                title=NULL,
                                expand = c(0,0),
-                               plot.title=element_text(size = 20), strip.text=element_text(size = 11),
+                               plot.title=element_text(size = 16), strip.text=element_text(size = 11),
                                xlabel=NULL, ylabel=NULL,
                                legend.position='right',
                                scale_color=NULL
@@ -59,15 +59,15 @@ ggplotMinAethetics <- function(ggplt,
     
     plt <- plt + theme(plot.title=plot.title, strip.text = strip.text)
     
-    plt <- plt + theme(axis.text=element_text(size=18),
-                       axis.title=element_text(size=20),
+    plt <- plt + theme(axis.text=element_text(size=14),
+                       axis.title=element_text(size=16),
                        axis.text.x = element_text(vjust = 0.3),
                        axis.line.x = element_line(color="black", linewidth = 0.5),
                        axis.line.y = element_line(color="black", linewidth = 0.5))
     
     plt <- plt + theme(legend.position = legend.position,
-                       legend.title = element_text(size=20), #change legend title font size
-                       legend.text = element_text(size=20), #change legend text font size
+                       legend.title = element_text(size=16), #change legend title font size
+                       legend.text = element_text(size=16), #change legend text font size
                        legend.title.align = 0.5) # Title alignment. Number from 0 (left) to 1 (right) 
    
     if (!is.null(scale_color)){
