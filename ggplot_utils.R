@@ -16,6 +16,7 @@
 #'   separately
 #' @param legend.position the position of legends ("none", "left", "right",
 #'   "bottom", "top", or two-element numeric vector)
+#' @param scale_color change line colors using the ggplot functions
 #' @export
 
 ggplotMinAethetics <- function(ggplt, 
@@ -23,7 +24,9 @@ ggplotMinAethetics <- function(ggplt,
                                title=NULL,
                                expand = c(0,0),
                                plot.title=element_text(size = 20), strip.text=element_text(size = 11),
-                               legend.position='right' 
+                               xlabel=NULL, ylabel=NULL,
+                               legend.position='right',
+                               scale_color=NULL
                                ){
     
     if (!is.null(width)){
@@ -38,6 +41,14 @@ ggplotMinAethetics <- function(ggplt,
     
     if (!is.null(title)){
         plt <- plt + labs(title = title)
+    }
+    
+    if (!is.null(xlabel)){
+        plt <- plt + labs(x = xlabel)
+    }
+    
+    if (!is.null(ylabel)){
+        plt <- plt + labs(y = ylabel)
     }
     
     # “the condition has length > 1 and only the first element will be used”
@@ -58,6 +69,21 @@ ggplotMinAethetics <- function(ggplt,
                        legend.title = element_text(size=20), #change legend title font size
                        legend.text = element_text(size=20), #change legend text font size
                        legend.title.align = 0.5) # Title alignment. Number from 0 (left) to 1 (right) 
-
+   
+    if (!is.null(scale_color)){
+        
+        switch(scale_color, 
+                npg={
+                  # case 'npg' here...
+                  # you need ggsci library
+                   library(ggsci) 
+                   plt <- plt + scale_color_npg()
+                },
+                {
+                   plt <- plt + scale_color
+                }
+              )
+    }
+       
     plt
 }
