@@ -63,8 +63,8 @@ ggplotMinAethetics <- function(ggplt,
     plt <- plt + theme(axis.text=element_text(size=14),
                        axis.title=element_text(size=16),
                        axis.text.x = element_text(vjust = 0.3),
-                       axis.line.x = element_line(color="black", linewidth = 0.5),
-                       axis.line.y = element_line(color="black", linewidth = 0.5))
+                       axis.line.x = element_line(color="black"),
+                       axis.line.y = element_line(color="black"))
     
     plt <- plt + theme(legend.position = legend.position,
                        legend.title = element_text(size=16), #change legend title font size
