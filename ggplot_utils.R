@@ -17,6 +17,7 @@
 #' @param legend.position the position of legends ("none", "left", "right",
 #'   "bottom", "top", or two-element numeric vector)
 #' @param scale_color change line colors using the ggplot functions
+#' @param scale_fill change fill colors using the ggplot functions
 #' @export
 
 ggplotMinAethetics <- function(ggplt, 
@@ -26,7 +27,7 @@ ggplotMinAethetics <- function(ggplt,
                                plot.title=element_text(size = 16), strip.text=element_text(size = 11),
                                xlabel=NULL, ylabel=NULL,
                                legend.position='right',
-                               scale_color=NULL
+                               scale_color=NULL, scale_fill=NULL
                                ){
     
     if (!is.null(width)){
@@ -84,6 +85,21 @@ ggplotMinAethetics <- function(ggplt,
                 }
               )
     }
-       
+    
+    if (!is.null(scale_fill)){
+        
+        switch(scale_fill, 
+                npg={
+                  # case 'npg' here...
+                  # you need ggsci library
+                   library(ggsci) 
+                   plt <- plt + scale_fill_npg()
+                },
+                {
+                   plt <- plt + scale_fill
+                }
+              )
+    }
+    
     plt
 }
