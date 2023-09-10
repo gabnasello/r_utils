@@ -26,6 +26,8 @@ ggplotMinAethetics <- function(ggplt,
                                expand = c(0,0),
                                plot.title=element_text(size = 16), strip.text=element_text(size = 11),
                                xlabel=NULL, ylabel=NULL,
+                               xlim=NULL, ylim=NULL,
+                               x.text.angle = NULL,
                                legend.position='right',
                                scale_color=NULL, scale_fill=NULL
                                ){
@@ -55,6 +57,15 @@ ggplotMinAethetics <- function(ggplt,
     # “the condition has length > 1 and only the first element will be used”
     plt <- plt + scale_y_continuous(expand=expand)
     
+    if (!is.null(ylim)){
+        plt <- plt + scale_y_continuous(expand=expand, limits=ylim)
+    }
+    
+    if (!is.null(xlim)){
+        plt <- plt + scale_x_continuous(limits=xlim)
+    }
+    
+    
     plt <- plt + theme(panel.grid.major = element_blank(), 
                        panel.grid.minor = element_blank())
     
@@ -71,6 +82,11 @@ ggplotMinAethetics <- function(ggplt,
                        legend.text = element_text(size=16), #change legend text font size
                        legend.title.align = 0.5) # Title alignment. Number from 0 (left) to 1 (right) 
    
+    if (!is.null(x.text.angle)){
+        radians = x.text.angle * ( pi / 180.0 )
+        plt <- plt + theme(axis.text.x = element_text(angle = x.text.angle, vjust = sin(radians), hjust=cos(radians)))
+    }
+    
     if (!is.null(scale_color)){
         
         switch(scale_color, 
