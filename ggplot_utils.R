@@ -25,10 +25,12 @@ ggplotMinAethetics <- function(ggplt,
                                title=NULL,
                                expand = c(0,0),
                                plot.title=element_text(size = 16), strip.text=element_text(size = 11),
+                               axis.text=element_text(size=14), axis.title=element_text(size=16),
                                xlabel=NULL, ylabel=NULL,
                                xlim=NULL, ylim=NULL,
                                x.text.angle = NULL,
-                               legend.position='right',
+                               legend.position='right', legend.title = element_text(size=16), 
+                               legend.text = element_text(size=16), legend.title.align = 0.5,
                                scale_color=NULL, scale_fill=NULL
                                ){
     
@@ -71,16 +73,16 @@ ggplotMinAethetics <- function(ggplt,
     
     plt <- plt + theme(plot.title=plot.title, strip.text = strip.text)
     
-    plt <- plt + theme(axis.text=element_text(size=14),
-                       axis.title=element_text(size=16),
+    plt <- plt + theme(axis.text=axis.text,
+                       axis.title=axis.title,
                        axis.text.x = element_text(vjust = 0.3),
                        axis.line.x = element_line(color="black"),
                        axis.line.y = element_line(color="black"))
     
     plt <- plt + theme(legend.position = legend.position,
-                       legend.title = element_text(size=16), #change legend title font size
-                       legend.text = element_text(size=16), #change legend text font size
-                       legend.title.align = 0.5) # Title alignment. Number from 0 (left) to 1 (right) 
+                       legend.title = legend.title, #change legend title font size
+                       legend.text = legend.text, #change legend text font size
+                       legend.title.align = legend.title.align) # Title alignment. Number from 0 (left) to 1 (right) 
    
     if (!is.null(x.text.angle)){
         radians = x.text.angle * ( pi / 180.0 )
