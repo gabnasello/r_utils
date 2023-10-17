@@ -31,7 +31,8 @@ ggplotMinAethetics <- function(ggplt,
                                x.text.angle = NULL,
                                legend.position='right', legend.title = element_text(size=16), 
                                legend.text = element_text(size=16), legend.title.align = 0.5,
-                               scale_color=NULL, scale_fill=NULL, scale_fill_manual.values=NULL
+                               scale_color=NULL, scale_fill=NULL, 
+                               scale_fill_manual.values=NULL, scale_color_manual.values=NULL, scale_color_manual.breaks=waiver()
                                ){
     
     if (!is.null(width)){
@@ -128,6 +129,16 @@ ggplotMinAethetics <- function(ggplt,
                                   breaks = waiver()
                                 )
         }
+
+    
+    if (!is.null(scale_color_manual.values)){
+
+       plt <- plt + scale_color_manual(
+                                      values = scale_color_manual.values,
+                                      breaks = scale_color_manual.breaks
+                                    )
+        }    
+
     
     plt
 }
