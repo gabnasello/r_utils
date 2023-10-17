@@ -31,7 +31,7 @@ ggplotMinAethetics <- function(ggplt,
                                x.text.angle = NULL,
                                legend.position='right', legend.title = element_text(size=16), 
                                legend.text = element_text(size=16), legend.title.align = 0.5,
-                               scale_color=NULL, scale_fill=NULL
+                               scale_color=NULL, scale_fill=NULL, scale_fill_manual.values=NULL
                                ){
     
     if (!is.null(width)){
@@ -118,6 +118,16 @@ ggplotMinAethetics <- function(ggplt,
                 }
               )
     }
+    
+
+    if (!is.null(scale_fill_manual.values)){
+
+       plt <- plt + scale_fill_manual(
+                                  values = scale_fill_manual.values,
+                                  aesthetics = "fill",
+                                  breaks = waiver()
+                                )
+        }
     
     plt
 }
