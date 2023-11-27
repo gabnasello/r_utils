@@ -31,6 +31,7 @@ ggplotMinAethetics <- function(ggplt,
                                x.text.angle = NULL,
                                legend.position='right', legend.title = element_text(size=16), 
                                legend.text = element_text(size=16), legend.title.align = 0.5,
+                               legend.size = NULL, legend.size.unit = 'in',
                                scale_color=NULL, scale_fill=NULL, 
                                scale_fill_manual.values=NULL, scale_color_manual.values=NULL, scale_color_manual.breaks=waiver()
                                ){
@@ -84,6 +85,10 @@ ggplotMinAethetics <- function(ggplt,
                        legend.title = legend.title, #change legend title font size
                        legend.text = legend.text, #change legend text font size
                        legend.title.align = legend.title.align) # Title alignment. Number from 0 (left) to 1 (right) 
+
+    if (!is.null(legend.size)){
+        plt <- plt + theme(legend.key.size = unit(legend.size, legend.size.unit))
+    }
    
     if (!is.null(x.text.angle)){
         radians = x.text.angle * ( pi / 180.0 )
